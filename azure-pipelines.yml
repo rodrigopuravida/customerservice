@@ -11,8 +11,8 @@ pool:
 
 # Set variables once
 variables:
-  configuration: Debug
-  platform: AnyCPU
+  configuration: 
+  platform: 
 
 steps:
 
