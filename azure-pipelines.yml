@@ -11,8 +11,8 @@ pool:
 
 # Set variables once
 variables:
-  configuration: release
-  platform: x64
+  configuration: Debug
+  platform: AnyCPU
 
 steps:
 
