@@ -7,11 +7,24 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-2019'
+  vmImage: 'vs2017-win2016'
 
+# Set variables once
 variables:
-  buildConfiguration: 'Release'
+  configuration: release
+  platform: x64
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+
+# .NET Core
+# Restore NuGet packages.
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+    #verbosityRestore: 'detailed' # Options: quiet, minimal, normal, detailed, diagnostic
+    
+- task: MSBuild@1
+  inputs:
+    configuration: $(configuration) # Use the variable
+platform: $(platform)
